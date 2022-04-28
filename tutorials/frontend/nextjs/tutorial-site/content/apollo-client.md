@@ -13,7 +13,7 @@ Apollo gives a neat abstraction layer and an interface to your GraphQL server. Y
 Let's get started by installing apollo client & peer graphql dependencies:
 
 ```bash
-$ yarn add @apollo/client graphql subscriptions-transport-ws
+$ yarn add @apollo/client @apollo/react-hooks graphql subscriptions-transport-ws
 ```
 
 ### Create Apollo Client Instance
@@ -118,8 +118,6 @@ Open `lib/withApollo.js` and add the following code:
 
 ```javascript
 import React from 'react';
-import App from 'next/app';
-import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import createApolloClient from './apolloClient';
 import auth0 from './auth0';
@@ -280,7 +278,6 @@ export const withApollo = ({ ssr = true } = {}) => (PageComponent) => {
 
           // getDataFromTree does not call componentWillUnmount
           // head side effect therefore need to be cleared manually
-          Head.rewind()
         }
       }
 
